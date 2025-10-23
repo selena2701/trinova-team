@@ -2,13 +2,14 @@ import os
 import math
 import re
 from dotenv import load_dotenv
-from moviepy import (
+from moviepy.editor import (
     VideoFileClip,
     AudioFileClip,
     ImageClip,
     CompositeVideoClip,
     concatenate_videoclips,
 )
+import moviepy.video.fx.all as vfx
 
 # Assuming the services and output_manager are in the same directory or in python path
 from services.base import ServiceConfig
@@ -20,11 +21,25 @@ from output_manager import OutputManager
 
 def parse_segments(script):
     """Parses the script to extract segments with visual and dialogue information."""
-    pattern = r'\[Segment (\d+).*?\]\s*Visual:\s*(.*?)\s*Dialogue:\s*(.*?)(?=\[Segment|\Z)'
+    pattern = r'\[Segment\s*(\d+).*?\]\s*\*?\s*Lời thoại\s*(?:\([^)]*\))?:\s*(.*?)\s*\*?\s*(?:Giọng đọc|Visual|.*\n?)(?=\[Segment|\Z)'
     matches = re.findall(pattern, script, re.DOTALL)
-    return {
-        int(m[0]): {"visual": m[1].strip(), "dialogue": m[2].strip()} for m in matches
-    }
+    
+    segments = {}
+    for m in matches:
+        seg_num = int(m[0])
+        dialogue = m[1].strip()
+        # Clean up dialogue
+        dialogue = re.sub(r'^\(.*?\)s*', '', dialogue) # Remove leading parentheticals
+        dialogue = dialogue.replace('\n', ' ').strip()
+        
+        # Heuristic to assign visual description
+        visual = "chuyen_gia" # Default
+        if seg_num in [3, 4, 6, 8, 9, 11, 14, 17, 20, 23, 26, 28]: # Segments spoken by old person
+            visual = "nguoi_cao_tuoi"
+            
+        segments[seg_num] = {"visual": visual, "dialogue": dialogue}
+        
+    return segments
 
 
 def solve(output_mgr: OutputManager) -> str:
@@ -41,12 +56,12 @@ def solve(output_mgr: OutputManager) -> str:
     TOTAL_DURATION = 240  # seconds
     SCRIPT_FILE_PATH = "script.txt"
     CHARACTER_DESCRIPTIONS = {
-        "nguoi_cao_tuoi": "Vietnamese old person, portrait",
-        "chuyen_gia": "Vietnamese consultant, portrait",
+        "nguoi_cao_tuoi": "Vietnamese old person, male, oldest, portrait",
+        "chuyen_gia": "Vietnamese consultant, female, old portrait",
     }
     VOICE_MAP = {
         "nguoi_cao_tuoi": "Vietnamese-Male-Old",
-        "chuyen_gia": "Vietnamese-Male-Young",
+        "chuyen_gia": "Vietnamese-FeMale-Young",
     }
     BACKGROUND_DESCRIPTION = "Vietnamese studio podcast background"
     GIF_OVERLAY_PATH = "image_ref/diaThan.gif"
@@ -75,7 +90,7 @@ def solve(output_mgr: OutputManager) -> str:
         char_refs[name] = ref_path
         print(f"Generated character reference: {ref_path}")
 
-    background_prompt = f"Vietnamese studio podcast background, warm lighting, professional, 1920x1080, NO TEXT\n{BACKGROUND_DESCRIPTION}"
+    background_prompt = f"Vietnamese studio podcast background, warm lighting, professional, 1920x1080, with 2 {CHARACTER_DESCRIPTIONS }= {char_refs}"
     background_ref_path = f"{folder}/reference/background.png"
     image_service.generate_and_save_chat(background_prompt, background_ref_path)
     print(f"Generated background reference: {background_ref_path}")
@@ -136,7 +151,7 @@ def solve(output_mgr: OutputManager) -> str:
             # Create a silent video clip
             print(f"Creating silent video for segment {i}...")
             image_clip = ImageClip(image_path).set_duration(duration)
-            video_with_audio = image_clip
+            video_with_audio = image_clip.set_audio(None)
 
         if video_with_audio:
             video_path = f"{folder}/intermediate/video_{i}.mp4"
@@ -160,10 +175,9 @@ def solve(output_mgr: OutputManager) -> str:
     print("Overlaying GIF...")
     gif_clip = (
         VideoFileClip(GIF_OVERLAY_PATH, has_mask=True)
-        .set_loop(True)
+        .fx(vfx.loop, duration=final_video.duration)
         .resize(height=int(final_video.h * 0.15))  # 15% of video height
         .set_position(("left", "top"))
-        .set_duration(final_video.duration)
     )
 
     final_composite = CompositeVideoClip([final_video, gif_clip])

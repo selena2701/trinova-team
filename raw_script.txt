@@ -1,0 +1,26 @@
+Bạn là một biên tập podcast chuyên nghiệp, chuyên làm về chủ đề tư vấn tâm lý xã hội. Bạn hãy lên kịch bản cho một buổi podcast 4 phút giữa 1 chuyên gia tư vấn tâm lý người cao tuổi và 1 người cao tuổi đang đối mặt với những trăn trở phổ biến tuổi về già ở Việt Nam. 
+
+Chủ đề buổi podcast: Người cao tuổi có nên vào viện dưỡng lão?
+
+Bối cảnh: Việt Nam
+Ngôn ngữ: tiếng Việt
+
+Nhân vật:
+- 1 chuyên gia: tên Đặng Kiến Tường, 60 tuổi, giới tính nam, là giáo sư tiến sĩ ngành tâm lý học nổi tiếng, uy tín tại Việt Nam, có hơn 20 năm kinh nghiệm tư tâm lý cho người cao tuổi ở Việt Nam. Chất giọng: điềm đạm, trầm ấm, truyền cảm tạo sự tin tưởng và an toàn cho người được tham vấn.
+- 1 người cao tuổi điển hình trong xã hội Việt Nam: tên Nguyễn Hiếu Trung, tuổi 70, giới tính Nam. Quốc tịch: Việt Nam, lớn lên và sinh sống tại Hà Nội. Tính cách: là một người ưu tiên những thứ truyền thống, kiên định, thích sống gần gia đình, con cháu. Chất giọng: nhiều tâm sự, đượm buồn, nhiều trăn trở trong cuộc sống.
+
+Kịch bản:
+Ông Trung thuộc tầng lớp trung lưu trong xã hội, là 1 cán bộ công chức đã về hưu, vợ vừa mất 3 năm do Covid, có 2 người con (1 con trai lớn và 1 con gái). Con trai của ông Trung hiện đang định cư và làm việc, đã có gia đình riêng sinh sống tại Hoa Kỳ. Con gái ông hiện đang sống chung với ông, nhưng vì tính chất công việc kinh doanh nên thường xuyên phải công tác xa nhà. Con trai lớn ông đã nhiều lần đề xuất đưa ông qua Mỹ để định cư cho tiện bề chăm sóc nhưng ông một mực muốn ở lại nơi quê hương để giữ gìn nhà tổ. Gần đây, căn bệnh nhịp tim chậm của ông ngày một tiến triển phức tạp, thường xuyên khó thở khi suy nghĩ áp lực do lo lắng cuộc sống con cái, nên 2 người con ông có đề xuất đưa ông vào viện dưỡng lão để có sự chăm sóc đặc biệt. Ông Trung cảm thấy rất buồn vì tư tưởng đưa cha mẹ vào viện dưỡng lão là ruồng bỏ và bất hiểu. Hôm nay, ông Trung tìm đến chuyên gia Đặng Kiến Tường rất nổi tiếng trong việc tham vấn tâm lý cho người cao tuổi để bày tỏ tâm sự và gỡ bỏ những trăn trở. Chuyên gia thấy đây cũng là 1 vấn đề rất phổ biến ở xã hội á châu đặc biệt là Việt Nam nên muốn biến thành một buổi podcast để chia sẻ cho những trăn trở chung của những người cao tuổi. Output của buổi này, chuyên gia muốn cung cấp thêm góc nhìn cho những người cao tuổi ở Việt Nam về vấn đề việc đưa cha mẹ vào viện dưỡng lão có những lợi ích cho một số trường hợp, không hẳn là ruồng bỏ, bất hiếu,...
+
+Phong cách: tự nhiên, có thể mang một chút tính chất đặc trưng vùng miền ở Việt Nam.
+
+Format output:
+chia theo mỗi segment, mỗi segment mô tả lời thoại, giọng đọc theo từng segment, cảm xúc giọng đọc thay đổi theo diễn biến tâm lý phù hợp ở segment đó, chi tiết mỗi segment 8s đối thoại, tổng số segment là 30.
+ví dụ:
+[Segment 1 (0-8s)]
+Visual: Close-up on chuyen_gia, smiling warmly in a cozy studio setting.
+Dialogue: Cháu chào bác ạ. Cảm ơn bác đã đến với chương trình hôm nay. Bác có thể chia sẻ một chút về những trăn trở của mình không ạ?
+
+[Segment 2 (8-16s)]
+Visual: Close-up on nguoi_cao_tuoi, looking thoughtful.
+Dialogue: Chào cháu. Bác năm nay cũng ngoài bảy mươi rồi. Con cháu thì ở xa, cả ngày chỉ quanh quẩn một mình, cũng thấy buồn.
