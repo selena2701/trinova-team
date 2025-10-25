@@ -30,12 +30,9 @@ TOTAL_DURATION = 240s  # seconds
 SCRIPT_FILE_PATH = "script.txt"
 CHARACTER_DESCRIPTIONS = {
     "nguoi_cao_tuoi": "Vietnamese male old person, portrait",
-    "chuyen_gia": "Vietnamese male consultant, portrait"
+    "chuyen_gia": "Vietnamese female consultant, portrait"
 }
-VOICE_MAP = {
-    "nguoi_cao_tuoi": "Vietnamese-Male-Old",
-    "chuyen_gia": "Vietnamese-Male-Young"
-}
+
 BACKGROUND_DESCRIPTION = "Vietnamese studio podcast background"
 ```
 
